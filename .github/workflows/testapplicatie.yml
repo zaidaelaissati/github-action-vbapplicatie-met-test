@@ -1,0 +1,33 @@
+name: testapplworkflow
+
+on: push
+
+jobs: 
+  build:
+    name: builden
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Install Dependencies
+        run: npm install
+
+  test:
+    needs: build
+    name: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'   
+
+      - name: npm install, build and test
+        run: |
+          npm install
+          npm test  
