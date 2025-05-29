@@ -7,7 +7,9 @@ jobs:
     name: builden
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node
+      - name: Checkout repository #pakt repo
+        uses: actions/checkout@v4
+      - name: Setup Node #setup
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
